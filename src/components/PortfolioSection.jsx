@@ -1,35 +1,11 @@
 import { useEffect, useRef } from 'react'
-import { GlowCard } from './SpotlightCard'
-import { StarButton } from './StarButton'
+import { FlowButton } from './ui/FlowButton'
+import Features from './blocks/Features'
 import './PortfolioSection.css'
 
 const scrollToCalendar = () => {
   document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
 }
-
-const steps = [
-  {
-    id: 1,
-    phase: '01',
-    title: 'Prospect Discovery',
-    items: ['Define your ICP', 'Find verified prospects', 'Verify every email', 'Score leads by fit'],
-    glowColor: 'blue',
-  },
-  {
-    id: 2,
-    phase: '02',
-    title: 'AI Personalization',
-    items: ['Detect outreach signal', 'Match your value prop', 'Write personalized email', 'Audit & quality score'],
-    glowColor: 'purple',
-  },
-  {
-    id: 3,
-    phase: '03',
-    title: 'Send & Convert',
-    items: ['A/B test subject lines', 'Send at scale', 'AI classifies replies', 'Book meetings automatically'],
-    glowColor: 'blue',
-  },
-]
 
 export default function PortfolioSection() {
   const sectionRef = useRef(null)
@@ -58,7 +34,7 @@ export default function PortfolioSection() {
             <p className="portfolio__tagline portfolio__tagline--faded display-heading">in under 8 minutes.</p>
           </div>
           <div className="btn-group">
-            <StarButton onClick={scrollToCalendar}>See It In Action</StarButton>
+            <FlowButton onClick={scrollToCalendar} text="See It In Action" />
           </div>
         </div>
 
@@ -70,33 +46,7 @@ export default function PortfolioSection() {
           <span>&nbsp;FULL</span>
         </div>
 
-        <div className="portfolio__grid">
-          {steps.map((s, i) => (
-            <div key={s.id} className={`portfolio__card-wrapper reveal reveal-delay-${i + 1}`}>
-              <GlowCard
-                glowColor={s.glowColor}
-                style={{ width: '100%', height: '100%' }}
-                className="portfolio__glow-card"
-              >
-                <div className="portfolio__card-visual">
-                  <span className="portfolio__card-phase">{s.phase}</span>
-                  <ul className="portfolio__card-steps">
-                    {s.items.map((item, j) => (
-                      <li key={j} className="portfolio__card-step">
-                        <span className="portfolio__card-step-dot" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="portfolio__card-info">
-                  <span className="portfolio__card-cat">Phase {s.phase}</span>
-                  <h3 className="portfolio__card-title">{s.title}</h3>
-                </div>
-              </GlowCard>
-            </div>
-          ))}
-        </div>
+        <Features />
       </div>
     </section>
   )

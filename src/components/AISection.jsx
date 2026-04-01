@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { StarButton } from './StarButton'
+import { FlowButton } from './ui/FlowButton'
 import './AISection.css'
 
 const scrollToCalendar = () => {
@@ -50,9 +50,7 @@ export default function AISection() {
               One system.<br />Zero duct tape.
             </h2>
             <div className="btn-group ai-section__cta">
-              <StarButton onClick={scrollToCalendar}>
-                Book a Call
-              </StarButton>
+              <FlowButton onClick={scrollToCalendar} text="Book a Call" />
             </div>
           </div>
         </div>

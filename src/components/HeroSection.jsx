@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { StarButton } from './StarButton'
+import { FlowButton } from './ui/FlowButton'
 import './HeroSection.css'
 
 const StarIcon = () => (
@@ -50,9 +50,7 @@ export default function HeroSection() {
               with AI, and fills your calendar with qualified meetings —
               while you focus on closing.
             </p>
-            <StarButton onClick={scrollToCalendar}>
-              Book a Call
-            </StarButton>
+            <FlowButton onClick={scrollToCalendar} text="Book a Call" />
           </div>
         </div>
       </div>
