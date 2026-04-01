@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { StarButton } from './StarButton'
 import './AISection.css'
 
-const scrollToCalendar = () => {
-  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
+const openCalendar = () => {
+  window.open('https://cal.com/gabriel-syndra-gp6orz/15min', '_blank')
 }
 
 const integrations = [
@@ -50,7 +50,7 @@ export default function AISection() {
               One system.<br />Zero duct tape.
             </h2>
             <div className="btn-group ai-section__cta">
-              <StarButton onClick={scrollToCalendar}>
+              <StarButton onClick={openCalendar}>
                 Book a Call
               </StarButton>
             </div>

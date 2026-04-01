@@ -8,8 +8,8 @@ const StarIcon = () => (
   </svg>
 )
 
-const scrollToCalendar = () => {
-  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
+const openCalendar = () => {
+  window.open('https://cal.com/gabriel-syndra-gp6orz/15min', '_blank')
 }
 
 export default function HeroSection() {
@@ -50,7 +50,7 @@ export default function HeroSection() {
               with AI, and fills your calendar with qualified meetings —
               while you focus on closing.
             </p>
-            <StarButton onClick={scrollToCalendar}>
+            <StarButton onClick={openCalendar}>
               Book a Call
             </StarButton>
           </div>

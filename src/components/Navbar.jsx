@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { StarButton } from './StarButton'
 import './Navbar.css'
 
-const scrollToCalendar = () => {
-  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
+const openCalendar = () => {
+  window.open('https://cal.com/gabriel-syndra-gp6orz/15min', '_blank')
 }
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="navbar__cta">
-          <StarButton onClick={scrollToCalendar} className="navbar__cta-btn">
+          <StarButton onClick={openCalendar} className="navbar__cta-btn">
             Book a Call
           </StarButton>
         </div>

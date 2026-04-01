@@ -85,7 +85,7 @@ export default function FAQSection() {
           <div className="faq__contact-card reveal" id="contact">
             <p className="faq__card-title">Ready to fill your pipeline?</p>
             <p className="faq__card-sub">Book a 30-min call and we'll set up your first campaign live.</p>
-            <StarButton as="a" href="https://cal.com" target="_blank" rel="noopener noreferrer" className="faq__card-btn">
+            <StarButton as="a" href="https://cal.com/gabriel-syndra-gp6orz/15min" target="_blank" rel="noopener noreferrer" className="faq__card-btn">
               Book a Call
             </StarButton>
           </div>
