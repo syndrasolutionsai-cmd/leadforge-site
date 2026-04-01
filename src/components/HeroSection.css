@@ -1,0 +1,165 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  /* transparent — dots show through from fixed canvas */
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(var(--h-height) + 2rem);
+  padding-bottom: var(--sp-lg);
+  width: 100%;
+}
+
+/* ─── Floating logo card ─── */
+
+.hero__logo-card {
+  position: absolute;
+  top: calc(var(--h-height) + 1.5rem);
+  right: clamp(1.25rem, 5vw, 5rem);
+  background-color: var(--clr-white);
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.75rem, 4vw, 3.5rem);
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.hero__logo-card.visible,
+.reveal.visible .hero__logo-card,
+.hero__logo-card {
+  /* Triggered via JS class */
+}
+
+/* When hero is loaded, show the card */
+.hero .hero__logo-card {
+  animation: cardReveal 0.9s ease 0.5s forwards;
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__logo-card-text {
+  font-family: var(--ff-2);
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 2rem);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--clr-black);
+  display: block;
+}
+
+/* ─── Main headline ─── */
+
+.hero__headline {
+  font-size: clamp(4rem, 13.4vw, 13rem);
+  line-height: 0.9em;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.1s;
+  position: relative;
+  z-index: 1;
+  margin-bottom: clamp(2rem, 5vw, 5rem);
+}
+
+.hero__headline--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__headline-line {
+  display: block;
+}
+
+.hero__headline-line--indent {
+  /* No indent per the design — both lines left-aligned */
+}
+
+/* ─── Bottom area ─── */
+
+.hero__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  animation: fadeUp 0.9s ease 0.6s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Stars / trust ─── */
+
+.hero__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero__stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.hero__trust-text {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* ─── CTA area ─── */
+
+.hero__cta-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
+  max-width: 38ch;
+  text-align: right;
+}
+
+.hero__desc {
+  font-size: var(--text);
+  color: var(--clr-text-2);
+  line-height: 1.5em;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+  .hero__logo-card {
+    display: none;
+  }
+
+  .hero__headline {
+    font-size: clamp(3rem, 13vw, 6rem);
+  }
+
+  .hero__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .hero__cta-area {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

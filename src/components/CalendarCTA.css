@@ -1,0 +1,155 @@
+.cal-cta {
+  background-color: var(--clr-light-black);
+  border: 1px solid var(--clr-border);
+  border-radius: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: calc(var(--h-height) + 1rem);
+  transition: border-color var(--transition-1);
+}
+
+.cal-cta:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.cal-cta__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cal-cta__heading {
+  font-family: var(--ff-2);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--clr-white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1em;
+}
+
+.cal-cta__sub {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5em;
+}
+
+.cal-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  padding: 0.7em 1.6em;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* ─── Calendar widget ─── */
+
+.cal-cta__widget {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 0.35rem;
+  transition: border-color var(--transition-1);
+}
+
+.cal-cta:hover .cal-cta__widget {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.cal-cta__widget-inner {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+  box-shadow: inset 0 2px 1.5px rgba(165, 174, 184, 0.08);
+}
+
+.cal-cta__month-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.cal-cta__month-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  letter-spacing: 0.02em;
+}
+
+.cal-cta__duration {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  padding: 0.15em 0.6em;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Grid ─── */
+
+.cal-cta__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  cursor: default;
+  transition: background-color var(--transition-1);
+}
+
+.cal-day span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cal-day--header span {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.04em;
+}
+
+.cal-day--empty {
+  background: transparent;
+}
+
+/* Today — white ring */
+.cal-day--today {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.cal-day--today span {
+  color: var(--clr-white);
+  font-weight: 700;
+}
+
+/* Available slots — white fill */
+.cal-day--available {
+  background-color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.cal-day--available span {
+  color: var(--clr-white);
+  font-weight: 700;
+}
+
+.cal-day--available:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}

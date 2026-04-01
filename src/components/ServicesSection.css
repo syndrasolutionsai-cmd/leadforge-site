@@ -1,0 +1,141 @@
+.services {
+  background-color: transparent;
+  border-top: 1px solid var(--clr-border);
+}
+
+.services__heading {
+  font-size: clamp(3rem, 8vw, 9rem);
+  margin-bottom: clamp(2rem, 5vw, 5rem);
+}
+
+/* ─── List ─── */
+
+.services__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Single service row ─── */
+
+.service {
+  border-top: 1px solid var(--clr-border);
+}
+
+.service:last-child {
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.service__row {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-1);
+  color: var(--clr-white);
+  background: none;
+  border: none;
+}
+
+.service__row:hover .service__name {
+  opacity: 0.75;
+}
+
+/* Arrow icon */
+.service__arrow-icon {
+  width: clamp(1.25rem, 2vw, 2rem);
+  height: clamp(1.25rem, 2vw, 2rem);
+  flex-shrink: 0;
+  color: var(--clr-white);
+  transition: transform 0.35s ease;
+}
+
+.service__arrow-icon--down {
+  transform: rotate(90deg);
+}
+
+/* Name */
+.service__name {
+  flex: 1;
+  font-family: var(--ff-2);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 3.25rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1em;
+  transition: opacity var(--transition-1);
+}
+
+/* Meta (number + ticks) */
+.service__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.service__num {
+  font-family: var(--ff-2);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+  min-width: 2ch;
+}
+
+/* Decorative ticks */
+.service__ticks {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.service__tick {
+  display: block;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 1px;
+}
+
+.service--open .service__tick {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── Expandable body ─── */
+
+.service__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease, padding 0.4s ease;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.service--open .service__body {
+  grid-template-rows: 1fr;
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.service__desc {
+  min-height: 0;
+  font-size: var(--text);
+  color: var(--clr-text);
+  max-width: 65ch;
+  padding-left: calc(clamp(1.25rem, 2vw, 2rem) + clamp(1rem, 2vw, 2rem));
+  line-height: 1.6em;
+  overflow: hidden;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 600px) {
+  .service__ticks {
+    display: none;
+  }
+
+  .service__meta {
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,66 @@
+.embla {
+  position: relative;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  margin-left: -1.5rem;
+}
+
+.embla__container--vertical {
+  flex-direction: column;
+  margin-left: 0;
+  margin-top: -1.5rem;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: 1.5rem;
+}
+
+/* ─── Navigation buttons ─── */
+
+.embla__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--clr-white);
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.embla__btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.embla__btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Positioned variants (used when inside .embla--positioned) */
+.embla--positioned .embla__btn--prev {
+  position: absolute;
+  top: 50%;
+  left: -3.5rem;
+  transform: translateY(-50%);
+}
+
+.embla--positioned .embla__btn--next {
+  position: absolute;
+  top: 50%;
+  right: -3.5rem;
+  transform: translateY(-50%);
+}
