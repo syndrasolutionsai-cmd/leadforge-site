@@ -82,6 +82,10 @@
   transform: translateY(0);
 }
 
+.hero__headline--es {
+  font-size: clamp(2.75rem, 8.5vw, 8rem);
+}
+
 .hero__headline-line {
   display: block;
 }

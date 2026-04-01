@@ -31,10 +31,6 @@ export default function Navbar() {
           <a href="#integrations" className="navbar__link">{t.nav.integrations}</a>
           <a href="#faq"          className="navbar__link">{t.nav.faq}</a>
           <a href="#contact"      className="navbar__link">{t.nav.contact}</a>
-        </nav>
-
-        <div className="navbar__cta">
-          {/* Language toggle */}
           <button
             className="lang-toggle"
             onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
@@ -44,7 +40,9 @@ export default function Navbar() {
             <span className="lang-toggle__divider">/</span>
             <span className={lang === 'es' ? 'lang-toggle__opt lang-toggle__opt--active' : 'lang-toggle__opt'}>ES</span>
           </button>
+        </nav>
 
+        <div className="navbar__cta">
           <StarButton onClick={openCalendar} className="navbar__cta-btn">
             {t.nav.bookCall}
           </StarButton>

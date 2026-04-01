@@ -15,7 +15,7 @@ const openCalendar = () => {
 
 export default function HeroSection() {
   const headlineRef = useRef(null)
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   useEffect(() => {
     const el = headlineRef.current
@@ -30,7 +30,7 @@ export default function HeroSection() {
           <span className="hero__logo-card-text">LEADFORGE</span>
         </div>
 
-        <div className="hero__headline display-heading" ref={headlineRef}>
+        <div className={`hero__headline display-heading${lang === 'es' ? ' hero__headline--es' : ''}`} ref={headlineRef}>
           <span className="hero__headline-line">{t.hero.line1}</span>
           <span className="hero__headline-line">{t.hero.line2}</span>
         </div>
