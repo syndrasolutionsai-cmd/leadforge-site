@@ -114,10 +114,10 @@
 .portfolio__card-phase {
   font-family: var(--ff-2);
   font-weight: 700;
-  font-size: clamp(1.25rem, 2vw, 2rem);
-  color: rgba(255, 255, 255, 0.2);
+  font-size: clamp(4rem, 8vw, 7rem);
+  color: rgba(255, 255, 255, 0.12);
   line-height: 1;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .portfolio__card-steps {
