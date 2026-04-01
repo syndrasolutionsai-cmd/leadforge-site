@@ -30,8 +30,7 @@ export default function Navbar() {
           <a href="#features" className="navbar__link">Features</a>
           <a href="#integrations" className="navbar__link">Integrations</a>
           <a href="#faq" className="navbar__link">FAQ</a>
-          <a href="#" className="navbar__link">Blog</a>
-          <a href="#contact" className="navbar__link">Contact</a>
+<a href="#contact" className="navbar__link">Contact</a>
         </nav>
 
         {/* CTA */}
