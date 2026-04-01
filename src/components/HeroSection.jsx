@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { StarButton } from './StarButton'
 import { useLanguage } from '../context/LangContext'
 import './HeroSection.css'
@@ -14,13 +14,11 @@ const openCalendar = () => {
 }
 
 export default function HeroSection() {
-  const headlineRef = useRef(null)
   const { t, lang } = useLanguage()
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const el = headlineRef.current
-    if (!el) return
-    requestAnimationFrame(() => el.classList.add('hero__headline--visible'))
+    requestAnimationFrame(() => setVisible(true))
   }, [])
 
   return (
@@ -30,7 +28,7 @@ export default function HeroSection() {
           <span className="hero__logo-card-text">LEADFORGE</span>
         </div>
 
-        <div className={`hero__headline display-heading${lang === 'es' ? ' hero__headline--es' : ''}`} ref={headlineRef}>
+        <div className={`hero__headline display-heading${visible ? ' hero__headline--visible' : ''}${lang === 'es' ? ' hero__headline--es' : ''}`}>
           <span className="hero__headline-line">{t.hero.line1}</span>
           <span className="hero__headline-line">{t.hero.line2}</span>
         </div>
