@@ -1,38 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { GlowCard } from './SpotlightCard'
 import { StarButton } from './StarButton'
+import { useLanguage } from '../context/LangContext'
 import './PortfolioSection.css'
 
-const scrollToCalendar = () => {
-  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
+const openCalendar = () => {
+  window.open('https://cal.com/gabriel-syndra-gp6orz/15min', '_blank')
 }
-
-const steps = [
-  {
-    id: 1,
-    phase: '01',
-    title: 'Prospect Discovery',
-    items: ['Define your ICP', 'Find verified prospects', 'Verify every email', 'Score leads by fit'],
-    glowColor: 'blue',
-  },
-  {
-    id: 2,
-    phase: '02',
-    title: 'AI Personalization',
-    items: ['Detect outreach signal', 'Match your value prop', 'Write personalized email', 'Audit & quality score'],
-    glowColor: 'purple',
-  },
-  {
-    id: 3,
-    phase: '03',
-    title: 'Send & Convert',
-    items: ['A/B test subject lines', 'Send at scale', 'AI classifies replies', 'Book meetings automatically'],
-    glowColor: 'blue',
-  },
-]
 
 export default function PortfolioSection() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
+  const steps = t.portfolio.steps
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,32 +28,34 @@ export default function PortfolioSection() {
     return () => observer.disconnect()
   }, [])
 
+  const glowColors = ['blue', 'purple', 'blue']
+
   return (
     <section className="portfolio section-pad" id="how-it-works" ref={sectionRef}>
       <div className="container">
         <div className="portfolio__header reveal">
           <div className="portfolio__header-text">
-            <p className="portfolio__tagline display-heading">From zero to booked meeting</p>
-            <p className="portfolio__tagline portfolio__tagline--faded display-heading">in under 8 minutes.</p>
+            <p className="portfolio__tagline display-heading">{t.portfolio.tagline1}</p>
+            <p className="portfolio__tagline portfolio__tagline--faded display-heading">{t.portfolio.tagline2}</p>
           </div>
           <div className="btn-group">
-            <StarButton onClick={scrollToCalendar}>See It In Action</StarButton>
+            <StarButton onClick={openCalendar}>{t.portfolio.cta}</StarButton>
           </div>
         </div>
 
         <div className="portfolio__pride display-heading reveal reveal-delay-1">
-          <span>YOUR PIPELINE&nbsp;</span>
+          <span>{t.portfolio.pipeline1}&nbsp;</span>
           <span className="portfolio__pride-box">
             <span className="portfolio__pride-box-inner">LEADFORGE</span>
           </span>
-          <span>&nbsp;FULL</span>
+          <span>&nbsp;{t.portfolio.pipeline2}</span>
         </div>
 
         <div className="portfolio__grid">
           {steps.map((s, i) => (
-            <div key={s.id} className={`portfolio__card-wrapper reveal reveal-delay-${i + 1}`}>
+            <div key={s.phase} className={`portfolio__card-wrapper reveal reveal-delay-${i + 1}`}>
               <GlowCard
-                glowColor={s.glowColor}
+                glowColor={glowColors[i]}
                 style={{ width: '100%', height: '100%' }}
                 className="portfolio__glow-card"
               >

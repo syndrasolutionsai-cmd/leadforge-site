@@ -1,3 +1,4 @@
+import { LangProvider } from './context/LangContext'
 import { BackgroundPaths } from './components/BackgroundPaths'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -10,6 +11,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
+    <LangProvider>
     <div className="app">
       <BackgroundPaths />
       <Navbar />
@@ -23,6 +25,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </LangProvider>
   )
 }
 

@@ -1,14 +1,6 @@
 import { Globe, Share2, MessageCircle, Link2, Send, Rss } from 'lucide-react'
+import { useLanguage } from '../context/LangContext'
 import './Footer.css'
-
-const navLinks = [
-  { title: 'How It Works', href: '#how-it-works' },
-  { title: 'Features',     href: '#features' },
-  { title: 'Integrations', href: '#integrations' },
-  { title: 'FAQ',          href: '#faq' },
-  { title: 'Blog',         href: '#' },
-  { title: 'Contact',      href: '#contact' },
-]
 
 const socialLinks = [
   { icon: Share2,        label: 'LinkedIn',  href: '#' },
@@ -20,17 +12,16 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const { t } = useLanguage()
   return (
     <footer className="footer">
       <div className="footer__inner">
-
-        {/* Logo — no bolt, all white */}
         <a href="/" className="footer__logo" aria-label="LeadForge home">
           LEADFORGE
         </a>
 
         <nav className="footer__nav" aria-label="Footer navigation">
-          {navLinks.map((link) => (
+          {t.footer.links.map((link) => (
             <a key={link.title} href={link.href} className="footer__nav-link">
               {link.title}
             </a>
@@ -53,9 +44,8 @@ export default function Footer() {
         </div>
 
         <p className="footer__copy">
-          © {new Date().getFullYear()} LeadForge. All rights reserved.
+          © {new Date().getFullYear()} LeadForge. {t.footer.copy}
         </p>
-
       </div>
     </footer>
   )

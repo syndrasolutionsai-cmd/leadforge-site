@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { StarButton } from './StarButton'
+import { useLanguage } from '../context/LangContext'
 import './Navbar.css'
 
 const openCalendar = () => {
@@ -9,6 +10,7 @@ const openCalendar = () => {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { lang, setLang, t } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -19,36 +21,41 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
-        {/* Logo — no bolt, all white */}
         <a href="/" className="navbar__logo">
           <span className="navbar__logo-text">LEADFORGE</span>
         </a>
 
-        {/* Nav links */}
         <nav className={`navbar__nav ${menuOpen ? 'navbar__nav--open' : ''}`}>
-          <a href="#how-it-works" className="navbar__link">How It Works</a>
-          <a href="#features" className="navbar__link">Features</a>
-          <a href="#integrations" className="navbar__link">Integrations</a>
-          <a href="#faq" className="navbar__link">FAQ</a>
-<a href="#contact" className="navbar__link">Contact</a>
+          <a href="#how-it-works" className="navbar__link">{t.nav.howItWorks}</a>
+          <a href="#features"     className="navbar__link">{t.nav.features}</a>
+          <a href="#integrations" className="navbar__link">{t.nav.integrations}</a>
+          <a href="#faq"          className="navbar__link">{t.nav.faq}</a>
+          <a href="#contact"      className="navbar__link">{t.nav.contact}</a>
         </nav>
 
-        {/* CTA */}
         <div className="navbar__cta">
+          {/* Language toggle */}
+          <button
+            className="lang-toggle"
+            onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+            aria-label="Toggle language"
+          >
+            <span className={lang === 'en' ? 'lang-toggle__opt lang-toggle__opt--active' : 'lang-toggle__opt'}>EN</span>
+            <span className="lang-toggle__divider">/</span>
+            <span className={lang === 'es' ? 'lang-toggle__opt lang-toggle__opt--active' : 'lang-toggle__opt'}>ES</span>
+          </button>
+
           <StarButton onClick={openCalendar} className="navbar__cta-btn">
-            Book a Call
+            {t.nav.bookCall}
           </StarButton>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           className={`navbar__burger ${menuOpen ? 'navbar__burger--open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </button>
       </div>
     </header>

@@ -1,44 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { useLanguage } from '../context/LangContext'
 import './TestimonialsSection.css'
 
-const testimonials = [
-  {
-    id: 1,
-    quote: 'LeadForge replaced our entire outbound stack. We went from 2 booked demos a week to 14 in the first month — and every lead was actually qualified.',
-    name: 'James Carter',
-    username: 'Head of Growth, Nexify',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 2,
-    quote: "I replaced a 3-person SDR team with LeadForge. The personalization quality is unlike anything I\u2019ve seen \u2014 prospects actually think I wrote each email myself.",
-    name: 'Sarah Mendez',
-    username: 'Founder, Stackora',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 3,
-    quote: 'Pipeline went from total guesswork to completely predictable. LeadForge is the single best investment we made in our sales motion this year.',
-    name: 'Marcus Webb',
-    username: 'VP Sales, Orbital Analytics',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 4,
-    quote: 'The level of automation exceeded every expectation. We launched our first campaign in under 10 minutes and booked 6 calls that same week.',
-    name: 'Robert Chen',
-    username: 'CEO, PrecisionStack',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 5,
-    quote: 'An innovative approach that genuinely solved our cold outreach problem. The AI personalisation is scary good — and the results back it up.',
-    name: 'Sarah Miller',
-    username: 'Growth Lead, Lumenreach',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-  },
+const avatars = [
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
 ]
 
 function getVisibleCount(width) {
@@ -87,6 +58,8 @@ function GlowNavButton({ onClick, disabled, children, ariaLabel }) {
 }
 
 export default function TestimonialsSection() {
+  const { t } = useLanguage()
+  const testimonials = t.testimonials.items.map((item, i) => ({ ...item, id: i + 1, avatar: avatars[i] }))
   const [currentIndex, setCurrentIndex] = useState(0)
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
@@ -182,9 +155,9 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="tsl__label">Testimonials</span>
+          <span className="tsl__label">{t.testimonials.label}</span>
           <h2 className="tsl__heading display-heading">
-            Results our clients<br />actually see.
+            {t.testimonials.heading1}<br />{t.testimonials.heading2}
           </h2>
         </motion.div>
 
@@ -207,9 +180,9 @@ export default function TestimonialsSection() {
               animate={{ x: `-${currentIndex * (100 / visibleCount)}%` }}
               transition={{ type: 'spring', stiffness: 70, damping: 20 }}
             >
-              {testimonials.map((t) => (
+              {testimonials.map((item) => (
                 <motion.div
-                  key={t.id}
+                  key={item.id}
                   className="tsl__slide"
                   style={{ width: `${100 / visibleCount}%` }}
                   drag="x"
@@ -226,13 +199,13 @@ export default function TestimonialsSection() {
                     </div>
 
                     <div className="tsl__card-body">
-                      <p className="tsl__card-text">"{t.quote}"</p>
+                      <p className="tsl__card-text">"{item.quote}"</p>
 
                       <div className="tsl__card-footer">
                         <div className="tsl__card-avatar-wrap">
                           <img
-                            src={t.avatar}
-                            alt={t.name}
+                            src={item.avatar}
+                            alt={item.name}
                             className="tsl__card-avatar"
                             onError={(e) => { e.currentTarget.style.display = 'none' }}
                           />
@@ -243,8 +216,8 @@ export default function TestimonialsSection() {
                           />
                         </div>
                         <div>
-                          <p className="tsl__card-name">{t.name}</p>
-                          <p className="tsl__card-username">{t.username}</p>
+                          <p className="tsl__card-name">{item.name}</p>
+                          <p className="tsl__card-username">{item.username}</p>
                         </div>
                       </div>
                     </div>

@@ -178,3 +178,34 @@
     display: flex;
   }
 }
+
+/* ─── Language toggle ─── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.lang-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.lang-toggle__opt {
+  font-family: var(--ff-2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s;
+}
+.lang-toggle__opt--active {
+  color: #ffffff;
+}
+.lang-toggle__divider {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.2);
+}

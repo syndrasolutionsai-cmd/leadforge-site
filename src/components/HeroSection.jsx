@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { StarButton } from './StarButton'
+import { useLanguage } from '../context/LangContext'
 import './HeroSection.css'
 
 const StarIcon = () => (
@@ -14,6 +15,7 @@ const openCalendar = () => {
 
 export default function HeroSection() {
   const headlineRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const el = headlineRef.current
@@ -24,34 +26,27 @@ export default function HeroSection() {
   return (
     <section className="hero">
       <div className="hero__inner container">
-        {/* Floating logo card */}
         <div className="hero__logo-card">
           <span className="hero__logo-card-text">LEADFORGE</span>
         </div>
 
-        {/* Main headline */}
         <div className="hero__headline display-heading" ref={headlineRef}>
-          <span className="hero__headline-line">QUALIFIED LEADS.</span>
-          <span className="hero__headline-line">ON AUTOPILOT.</span>
+          <span className="hero__headline-line">{t.hero.line1}</span>
+          <span className="hero__headline-line">{t.hero.line2}</span>
         </div>
 
-        {/* Bottom row */}
         <div className="hero__bottom">
           <div className="hero__trust">
             <div className="hero__stars">
               <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
             </div>
-            <span className="hero__trust-text">Trusted by 500+ B2B teams</span>
+            <span className="hero__trust-text">{t.hero.trust}</span>
           </div>
 
           <div className="hero__cta-area">
-            <p className="hero__desc">
-              LeadForge finds your ideal prospects, writes hyper-personalized cold emails
-              with AI, and fills your calendar with qualified meetings —
-              while you focus on closing.
-            </p>
+            <p className="hero__desc">{t.hero.desc}</p>
             <StarButton onClick={openCalendar}>
-              Book a Call
+              {t.hero.cta}
             </StarButton>
           </div>
         </div>
